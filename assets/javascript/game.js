@@ -1,10 +1,29 @@
 // computer choices array
 var compChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-console.log(compChoice);
+
+
 // wins/losses variables
-var chances = 10;
+var chances = [];
+var chancesLeft = 9;
 var wins = 0;
 var losses = 0;
+
+// reset function
+function reset () {
+  chancesLeft = 9;
+
+  chancesFar = [];
+  compGuess = compChoice [Math.floor(Math.random() * compChoice.length)];
+}
+
+reset();
+
+// letters guessed
+function newword () {
+  chances = [];
+  chancesLeft = 9;
+  computerGuess = computerChoice[Math.floor(Math.random() * compChoice.length)];
+}
 
 // prints game components to screen 
 var winsText = document.getElementById("winsText");
@@ -13,25 +32,23 @@ var chancesText = document.getElementById("chancesText");
 
 // player chooses letter to guess
 document.onkeyup = function(event) {
+  // 
   var playerChoice = event.key;
 
+// making computer chose from array 
   var compGuess = compChoice[Math.floor(Math.random() * compChoice.length)];
 
-// if player player guesses correct wins +1
+// if player guesses correct wins +1
 if ((playerChoice === compGuess)) {
   wins++;
 }
-else {
-  losses++;
+// if play guesses wrong losses +1
+if ((playerChoice !== compGuess)) {
+  losses++
 }
 
+// prints wins/losses
 winsText.textContent = "wins: " + wins;
 lossesText.textContent = "losses: " + losses;
-
+chancesText.textContent = "Chances: " + chances;
 };
-
-
-// if player guesses wrong -1 chances
-// computer logs/prints wrong answers
-// when chances run out loss +1
-// game resets 
