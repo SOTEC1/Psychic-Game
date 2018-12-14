@@ -21,40 +21,40 @@ function newword () {
 }
 newword()
 // prints game components to screen 
-var winsText = document.getElementById("winsText");
-var lossesText = document.getElementById("lossesText");
-var chancesText = document.getElementById("chancesText");
-var lettersGuessed = document.getElementById("guessedText");
+var $winsText = document.getElementById("winsText");
+var $lossesText = document.getElementById("lossesText");
+var $chancesText = document.getElementById("chancesText");
+var $lettersGuessed = document.getElementById("guessedText");
 
-// player chooses letter to guess
+// when button is clicked function will run
 document.onkeyup = function(event) {
-  // 
+  // player makes guess
   var playerChoice = event.key;
   
-// making computer chose from array 
-
-// if player guesses correct wins +1
-
+// if player guesses correct
 if ((playerChoice === compGuess)) {
+  // wins go up by 1, alert to page notfying a win, game resets
   wins++;
   alert("You won!")
   newword();
 }
 
-
-// if play guesses wrong losses +1
+// if player guesses wrong
 if ((playerChoice !== compGuess)) {
+  // chances go down
   chancesLeft--;
-  
+  lettersGuessed.push(playerChoice);
+
+  // if chances run out, losses go up by 1 and game resets
   if ((chancesLeft === 0)) {
     losses++;
     newword();
   }
 }
 
-// prints wins/losses
-winsText.textContent = "wins: " + wins;
-lossesText.textContent = "losses: " + losses;
-chancesText.textContent = "Chances: " + chancesLeft;
-guessedText.textContent = "Letters chosen: " + playerChoice;
+// prints all text
+$winsText.textContent = "wins: " + wins;
+$lossesText.textContent = "losses: " + losses;
+$chancesText.textContent = "Chances: " + chancesLeft;
+$lettersGuessed.textContent = "Letters chosen: " + lettersGuessed;
 };
