@@ -16,6 +16,7 @@ var lettersGuessed = [];
 function newword () {
   chances = [];
   chancesLeft = 10;
+  lettersGuessed = [];
   compGuess = compChoice[Math.floor(Math.random() * compChoice.length)];
   console.log(compGuess);
 }
@@ -50,6 +51,11 @@ if ((playerChoice !== compGuess)) {
     losses++;
     newword();
   }
+}
+
+if (!compChoice.includes(playerChoice)) {
+  alert("This is not a letter!");
+  chancesLeft++;
 }
 
 // prints all text
