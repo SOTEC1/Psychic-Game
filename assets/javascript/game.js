@@ -49,6 +49,7 @@ if ((playerChoice !== compGuess)) {
   // if chances run out, losses go up by 1 and game resets
   if ((chancesLeft === 0)) {
     losses++;
+    alert("You lost!")
     newword();
   }
 }
